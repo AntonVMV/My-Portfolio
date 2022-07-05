@@ -11,12 +11,18 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
       <img src={`${cardData.image}`} alt="card backgroud" />
       <CardDesription>
         <p>{cardData.description}</p>
-        <a href={cardData.linkGh} target="_blank" rel="noreferrer">
-          Github code
-        </a>
-        <a href={cardData.linkBuild} target="_blank" rel="noreferrer">
-          Watch build
-        </a>
+        <div>
+          {cardData.linkGh && (
+            <a href={cardData.linkGh} target="_blank" rel="noreferrer">
+              Github code
+            </a>
+          )}
+          {cardData.linkBuild && (
+            <a href={cardData.linkBuild} target="_blank" rel="noreferrer">
+              Watch build
+            </a>
+          )}
+        </div>
       </CardDesription>
     </CardContainer>
   );

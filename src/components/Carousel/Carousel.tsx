@@ -1,6 +1,6 @@
 import { Card } from "../Card/Card";
 import { CarouselContainer, SlideContainer, CarouselBg } from "./style";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface CarouselProps {
   cardsDataArr: { image: string }[];

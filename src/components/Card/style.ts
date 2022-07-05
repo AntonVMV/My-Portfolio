@@ -8,8 +8,6 @@ interface CardContainerProps {
 export const CardContainer = styled.div<CardContainerProps>`
   width: 100%;
   height: 100%;
-  /* background: url(${(props) => props.img}) center top no-repeat; */
-  /* background-size: cover; */
   color: white;
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -31,29 +29,62 @@ export const CardContainer = styled.div<CardContainerProps>`
 `;
 
 export const CardDesription = styled.div`
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.65);
   opacity: 0;
-  transition: 1s ease;
+  transition: opacity 0.2s ease;
   width: 100%;
   height: 100%;
-  display: grid;
-  align-content: flex-end;
-  justify-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 15px;
-  padding: 30px;
-
+  padding: 0 50px;
+  div {
+    display: flex;
+    gap: 30px;
+  }
   p {
+    color: ${colors.white};
+    text-align: center;
+    grid-column: 1 / -1;
     font-size: 18px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.3s 0.2s ease;
+    display: flex;
+    padding-bottom: 15px;
+    gap: 15px;
+    ::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      background-color: white;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+    }
   }
   a {
     text-decoration: none;
     font-size: 16px;
     color: ${colors.secondary};
+    z-index: 99;
+    transition: 0.2s ease;
     :hover {
-      color: #ed9121;
+      color: #ffd08a;
     }
   }
   :hover {
     opacity: 1;
+    p {
+      opacity: 1;
+      ::after {
+        width: 50%;
+        transition: width 0.3s 0.5s ease;
+      }
+    }
   }
 `;

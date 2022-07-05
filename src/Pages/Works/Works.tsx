@@ -1,51 +1,20 @@
 import { MainContainer, MainTitle } from "../../styles";
 import { Carousel } from "../../components/Carousel/Carousel";
-
-export const mockCards = [
-  {
-    image: "./img/blog.png",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deserunt placeat ipsa impedit, dolore, explicabo ad nemo assumenda ratione sunt doloribus cum, accusamus eveniet. Dolor facere porro eum eius. Dolorem.",
-    linkBuild: "/",
-    linkGh: "/",
-  },
-  {
-    image: "./img/movies.png",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deserunt placeat ipsa impedit, dolore, explicabo ad nemo assumenda ratione sunt doloribus cum, accusamus eveniet. Dolor facere porro eum eius. Dolorem.",
-    linkBuild: "/",
-    linkGh: "/",
-  },
-  {
-    image: "./img/test.png",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deserunt placeat ipsa impedit, dolore, explicabo ad nemo assumenda ratione sunt doloribus cum, accusamus eveniet. Dolor facere porro eum eius. Dolorem.",
-    linkBuild: "/",
-    linkGh: "/",
-  },
-  {
-    image: "./img/layout.png",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deserunt placeat ipsa impedit, dolore, explicabo ad nemo assumenda ratione sunt doloribus cum, accusamus eveniet. Dolor facere porro eum eius. Dolorem.",
-    linkBuild: "/",
-    linkGh: "/",
-  },
-  {
-    image: "./img/tetris.png",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deserunt placeat ipsa impedit, dolore, explicabo ad nemo assumenda ratione sunt doloribus cum, accusamus eveniet. Dolor facere porro eum eius. Dolorem.",
-    linkBuild: "/",
-    linkGh: "/",
-  },
-];
+import { data } from "../../data/carouselData";
+import { WorksContainer } from "./style";
+import { Highlighted } from "../../styles";
 
 export const Works: React.FC = () => {
   return (
-    <>
+    <WorksContainer>
       <MainContainer>
-        <MainTitle style={{ paddingTop: "100px" }}>Here some works</MainTitle>
+        <MainTitle>
+          Several <Highlighted>projects</Highlighted> that I completed during
+          <Highlighted> studies</Highlighted>. I hope this list will{" "}
+          <Highlighted>grow</Highlighted>.
+        </MainTitle>
       </MainContainer>
-      <Carousel cardsDataArr={mockCards} />
-    </>
+      <Carousel cardsDataArr={data} />
+    </WorksContainer>
   );
 };

@@ -31,5 +31,5 @@ export const SlideContainer = styled.div<SlideContainerProps>`
   height: 100%;
   padding: 0 15px;
   background-color: transparent;
-  transition: 0.5s ease;
+  transition: 1s ease;
 `;
