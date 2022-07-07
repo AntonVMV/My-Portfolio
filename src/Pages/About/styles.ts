@@ -8,21 +8,33 @@ export const AboutContainer = styled.div`
   position: relative;
   gap: 50px;
   align-items: flex-start;
+  padding: 200px 0 25px;
   ::after {
     content: "";
-    display: block;
+    top: 0;
     position: absolute;
     left: -10%;
     height: 100%;
     width: 85%;
     background-color: white;
     z-index: -1;
-  }
-  button {
-    grid-column: 1 / 3;
+    @media screen and (max-width: 768px) {
+      top: 0;
+      left: 0;
+      height: 400px;
+      width: 100vw;
+    }
   }
   a {
     text-decoration: none;
+  }
+  @media screen and (max-height: 900px) {
+    padding: 150px 0 25px;
+  }
+  @media screen and (max-width: 768px) {
+    position: static;
+    align-items: center;
+    padding: 75px 0 20px;
   }
 `;
 
@@ -32,8 +44,13 @@ export const ProfileInfo = styled.div`
   grid-template-rows: auto 1fr 1fr;
   align-items: center;
   row-gap: 25px;
-  margin-top: 200px;
   text-align: end;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    grid-template-rows: auto;
+  }
 `;
 
 export const ProfileSubTitle = styled.h4`
@@ -51,6 +68,16 @@ export const ProfileSubTitle = styled.h4`
     height: 1px;
     background-color: black;
   }
+  @media screen and (max-width: 768px) {
+    justify-self: center;
+    ::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: black;
+    }
+  }
 `;
 
 export const ProfilePhoto = styled.div`
@@ -65,13 +92,18 @@ export const ProfilePhoto = styled.div`
   border: 10px solid white;
   background-color: #ebebeb;
   position: relative;
+  @media screen and (max-width: 768px) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 export const Social = styled.div`
   margin-top: auto;
   display: flex;
   gap: 10px;
-  padding: 30px 0;
   a {
     color: ${colors.primary};
   }

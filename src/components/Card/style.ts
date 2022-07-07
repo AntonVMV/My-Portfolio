@@ -66,7 +66,11 @@ export const CardDesription = styled.div`
       transform: translateX(-50%);
       bottom: 0;
     }
+    @media screen and (max-width: 576px) {
+      font-size: 14px;
+    }
   }
+
   a {
     text-decoration: none;
     font-size: 16px;
@@ -75,6 +79,9 @@ export const CardDesription = styled.div`
     transition: 0.2s ease;
     :hover {
       color: #ffd08a;
+    }
+    @media screen and (max-width: 576px) {
+      font-size: 14px;
     }
   }
   :hover {
@@ -86,5 +93,8 @@ export const CardDesription = styled.div`
         transition: width 0.3s 0.5s ease;
       }
     }
+  }
+  @media screen and (max-width: 576px) {
+    padding: 0 20px;
   }
 `;

@@ -38,4 +38,8 @@ export const StyledForm = styled.form`
     color: ${colors.secondary};
     text-transform: uppercase;
   }
+  @media screen and (max-width: 768px) {
+    min-width: 80%;
+    padding: 25px;
+  }
 `;

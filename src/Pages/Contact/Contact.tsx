@@ -1,16 +1,25 @@
+import React, { useState } from "react";
 import { CotactContainer, Contacts, ContactBG } from "./style";
 import { MainContainer } from "../../styles";
 import { Form } from "../../components/Form/Form";
 import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from "react-icons/ai";
 import { FaTelegram } from "react-icons/fa";
 import { MainText, MainTitle, Highlighted } from "../../styles";
-import React from "react";
 import { WithTooltip } from "../../components/WithTooltip/WithTooltip";
 import { emailjsRequest } from "../../request/emailjsRequest";
+import { MainPortal } from "../../MainPortal/MainPortal";
+import { Modal } from "../../components/Modal/Modal";
 
 export const Contact: React.FC = () => {
+  const [modalText, setModalText] = useState<string | null>(null);
+
   const copyToClipboard = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigator.clipboard.writeText(e.currentTarget.innerText);
+    setModalText("Copied to clipboard");
+  };
+
+  const emailSendHandler = (data: HTMLFormElement) => {
+    emailjsRequest(data).then(() => setModalText("Sent successfully"));
   };
 
   return (
@@ -24,7 +33,7 @@ export const Contact: React.FC = () => {
             </Highlighted>{" "}
             in any convenient way.
           </MainTitle>
-          <Form onSubmit={emailjsRequest} />
+          <Form onSubmit={emailSendHandler} />
           <Contacts>
             <h3>My contacts:</h3>
             <div>
@@ -55,6 +64,16 @@ export const Contact: React.FC = () => {
                 Go to linkedIn
               </a>
             </div>
+
+            {modalText && (
+              <MainPortal>
+                <Modal
+                  isActive={!!modalText}
+                  onClose={() => setModalText(null)}
+                  text={modalText}
+                />
+              </MainPortal>
+            )}
           </Contacts>
         </CotactContainer>
       </ContactBG>

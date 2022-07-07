@@ -16,7 +16,7 @@ export default createGlobalStyle`
 }
 
 html, body, #root, #root > div {
-  height: 100vh;
+  height: 100%;
 }  
 
 
@@ -49,6 +49,9 @@ export const MainTextSmall = styled.p`
 export const MainTitle = styled.h2`
   font-size: 42px;
   font-weight: 800;
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const Highlighted = styled.span`

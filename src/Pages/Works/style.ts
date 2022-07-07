@@ -19,4 +19,7 @@ export const WorksContainer = styled.div`
     transform: translateX(-50%);
     z-index: -1;
   }
+  @media screen and (max-width: 768px) {
+    padding: 75px 0 20px;
+  }
 `;

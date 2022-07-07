@@ -24,12 +24,14 @@ export const CotactContainer = styled.div`
   grid-template-rows: auto 1fr;
   gap: 50px;
   padding: 125px 0 25px;
-
   h2 {
     grid-column: 1/ -1;
-    font-size: 38px;
     text-align: center;
-    font-weight: 800;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 75px 0 25px;
   }
 `;
 
@@ -71,5 +73,9 @@ export const Contacts = styled.div`
   svg {
     width: 1.5rem;
     height: 1.5rem;
+  }
+  @media screen and (max-width: 768px) {
+    min-width: 75vw;
+    padding: 25px;
   }
 `;
