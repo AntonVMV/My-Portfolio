@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import { colors } from "../../styles";
+import { colorPalette } from "../../styles";
 
 interface NavListProps {
   isMenuOpen: boolean;
 }
 
 export const Navigation = styled.nav`
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: ${colorPalette.light.background.lighter};
+  box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
+
   @media screen and (max-width: 768px) {
-    background-color: transparent;
     padding: 15px 0;
     position: fixed;
   }
@@ -27,7 +28,7 @@ export const NavList = styled.ul<NavListProps>`
 
   a {
     display: inline-block;
-    color: ${colors.primary};
+    color: ${colorPalette.light.primary.lighter};
     text-decoration: none;
     position: relative;
     padding: 10px;
@@ -40,7 +41,7 @@ export const NavList = styled.ul<NavListProps>`
       bottom: 0;
       width: 0;
       height: 3px;
-      background-color: ${colors.secondary};
+      background-color: ${colorPalette.light.secondary.lighter};
       transition: 0.2s ease;
       z-index: -1;
     }
@@ -50,7 +51,7 @@ export const NavList = styled.ul<NavListProps>`
       }
     }
     &.active {
-      color: ${colors.white};
+      color: ${colorPalette.light.background.lighter};
       ::before {
         height: 100%;
         width: 100%;
@@ -61,7 +62,7 @@ export const NavList = styled.ul<NavListProps>`
     transition: 0.3s ease;
     transform: ${(props) =>
       props.isMenuOpen ? "translateX(0)" : "translateX(-100%)"};
-    background-color: ${colors.white};
+    background-color: ${colorPalette.light.background.lighter};
     position: fixed;
     left: 0;
     top: 0;

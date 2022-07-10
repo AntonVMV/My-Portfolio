@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-export const colors = {
-  primary: "#000",
-  secondary: "#ff9900",
-  white: "#fff",
+export const colorPalette = {
+  light: {
+    primary: {
+      darker: "#3c3c3c",
+      lighter: "#8e8d8a",
+    },
+    secondary: {
+      darker: "#e85a4f",
+      lighter: "#e98074",
+    },
+    background: {
+      darker: "#e3d3be",
+      lighter: "#eae7dc",
+      lightest: "#f1efe7",
+    },
+  },
 };
 
 export default createGlobalStyle`
@@ -19,9 +31,8 @@ html, body, #root, #root > div {
   height: 100%;
 }  
 
-
 body {
-  background-color: #ebebeb;
+  background-color: ${colorPalette.light.background.darker};
   font-family: "Montserrat", sans-serif;
 }
 `;
@@ -38,6 +49,7 @@ export const MainText = styled.p`
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 20px;
+  color: ${colorPalette.light.primary.darker};
 `;
 
 export const MainTextSmall = styled.p`
@@ -46,14 +58,43 @@ export const MainTextSmall = styled.p`
   line-height: 18px;
 `;
 
+export const MainTextLarge = styled.p`
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  line-height: 20px;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+`;
+
 export const MainTitle = styled.h2`
   font-size: 42px;
   font-weight: 800;
+  color: ${colorPalette.light.primary.darker};
   @media screen and (max-width: 768px) {
     font-size: 28px;
   }
 `;
 
+export const TitleMid = styled.h3`
+  font-size: 34px;
+  font-weight: 700;
+  color: ${colorPalette.light.primary.darker};
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+`;
+
+export const TitleSm = styled.h4`
+  color: ${colorPalette.light.primary.darker};
+  font-size: 26px;
+  font-weight: 600;
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
 export const Highlighted = styled.span`
-  color: ${colors.secondary};
+  color: ${colorPalette.light.secondary.darker};
 `;

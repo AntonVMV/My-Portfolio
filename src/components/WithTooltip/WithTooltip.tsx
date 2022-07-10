@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { TooltipContainer, WithTooltipContainer } from "./style";
 
 interface WithTooltipProps {
@@ -10,6 +10,7 @@ export const WithTooltip: React.FC<WithTooltipProps> = ({ children, text }) => {
   const [isShow, setIsShow] = useState<boolean>(false);
 
   const mouseEnter = () => {
+    if (window.innerWidth < 768) return;
     setIsShow(true);
   };
 

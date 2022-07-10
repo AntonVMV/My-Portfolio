@@ -1,4 +1,4 @@
-import { colors } from "../../styles";
+import { colorPalette } from "../../styles";
 import styled from "styled-components";
 
 interface CardContainerProps {
@@ -8,7 +8,7 @@ interface CardContainerProps {
 export const CardContainer = styled.div<CardContainerProps>`
   width: 100%;
   height: 100%;
-  color: white;
+  color: ${colorPalette.light.background.lighter};
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   position: relative;
@@ -45,7 +45,7 @@ export const CardDesription = styled.div`
     gap: 30px;
   }
   p {
-    color: ${colors.white};
+    color: ${colorPalette.light.background.lighter};
     text-align: center;
     grid-column: 1 / -1;
     font-size: 18px;
@@ -60,7 +60,7 @@ export const CardDesription = styled.div`
       display: block;
       width: 0;
       height: 1px;
-      background-color: white;
+      background-color: ${colorPalette.light.background.lighter};
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -74,11 +74,11 @@ export const CardDesription = styled.div`
   a {
     text-decoration: none;
     font-size: 16px;
-    color: ${colors.secondary};
+    color: ${colorPalette.light.secondary.darker};
     z-index: 99;
     transition: 0.2s ease;
     :hover {
-      color: #ffd08a;
+      color: ${colorPalette.light.secondary.lighter};
     }
     @media screen and (max-width: 576px) {
       font-size: 14px;

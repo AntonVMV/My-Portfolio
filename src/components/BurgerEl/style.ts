@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { colorPalette } from "../../styles";
 
 interface BurgerContainerProps {
   isActive: boolean;
@@ -11,14 +12,14 @@ export const BurgerContainer = styled.div<BurgerContainerProps>`
   flex-direction: column;
   position: relative;
   z-index: 99;
+
   div {
     position: absolute;
     width: 100%;
     height: 5px;
-    background-color: black;
     border-radius: 2px;
     transition: 0.3s ease;
-    background-color: black;
+    background-color: ${colorPalette.light.primary.darker};
     :nth-child(1) {
       ${(props) =>
         props.isActive

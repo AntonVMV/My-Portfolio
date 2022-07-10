@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { colors } from "../../styles";
+import { colorPalette } from "../../styles";
 
 export const StyledForm = styled.form`
   padding: 50px;
-  background-color: ${colors.white};
+  background-color: ${colorPalette.light.background.lighter};
   display: grid;
   align-items: center;
   gap: 20px 10px;
@@ -22,12 +22,12 @@ export const StyledForm = styled.form`
   input,
   textarea {
     font-size: 15px;
-    background-color: #f9f9f9;
-    border: 1px solid #e5e5e5;
+    background-color: ${colorPalette.light.background.lighter};
+    border: 1px solid ${colorPalette.light.primary.lighter};
     transition: border-color 0.2s ease;
     :focus {
       outline: 0;
-      border-color: #ed9121;
+      border-color: ${colorPalette.light.secondary.lighter};
     }
   }
   button {
@@ -35,7 +35,7 @@ export const StyledForm = styled.form`
   }
   h3 {
     font-size: 18px;
-    color: ${colors.secondary};
+    color: ${colorPalette.light.secondary.darker};
     text-transform: uppercase;
   }
   @media screen and (max-width: 768px) {

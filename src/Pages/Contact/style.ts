@@ -1,7 +1,18 @@
 import styled from "styled-components";
-import { colors } from "../../styles";
+import { colorPalette } from "../../styles";
 
-export const ContactBG = styled.div`
+export const CotactContainer = styled.section`
+  display: grid;
+  align-items: flex-start;
+  align-content: flex-start;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 125px 0 25px;
+  h2 {
+    grid-column: 1/ -1;
+    text-align: center;
+  }
+
   min-height: 100vh;
   position: relative;
   ::after {
@@ -12,22 +23,10 @@ export const ContactBG = styled.div`
     transform: translateX(-50%);
     width: 65%;
     height: 100%;
-    background-color: ${colors.white};
+    background-color: ${colorPalette.light.background.lightest};
     z-index: -1;
   }
-`;
 
-export const CotactContainer = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-  gap: 50px;
-  padding: 125px 0 25px;
-  h2 {
-    grid-column: 1/ -1;
-    text-align: center;
-  }
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -36,15 +35,16 @@ export const CotactContainer = styled.div`
 `;
 
 export const Contacts = styled.div`
+  align-self: center;
   display: flex;
   flex-direction: column;
-  background-color: ${colors.white};
+  background-color: ${colorPalette.light.background.lighter};
   padding: 50px;
   gap: 15px;
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
   h3 {
     font-size: 16px;
-    color: ${colors.secondary};
+    color: ${colorPalette.light.secondary.darker};
     text-transform: uppercase;
   }
   div {
@@ -56,17 +56,19 @@ export const Contacts = styled.div`
   p {
     cursor: pointer;
     transition: 0.2s ease;
-    :hover {
-      color: #ed9121;
+    @media screen and (min-width: 769px) {
+      :hover {
+        color: ${colorPalette.light.secondary.lighter};
+      }
     }
   }
 
   a {
     text-decoration: none;
-    color: ${colors.primary};
+    color: ${colorPalette.light.primary.darker};
     transition: 0.2s ease;
     :hover {
-      color: #ed9121;
+      color: ${colorPalette.light.secondary.lighter};
     }
   }
 

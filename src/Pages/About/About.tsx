@@ -24,17 +24,16 @@ export const About: React.FC = () => {
           </MainTitle>
           <MainText>
             I've been studying development for more than a year. I have
-            completed several courses and received certificates. Now I continue
-            to learn and practice my skills by reading articles and watching
-            training videos. Always trying to learn something new and implement
-            it in my projects. I don't have commercial experience yet, so I'm
-            looking for a team in which I can grow, enjoy my work and just have
-            fun.
+            successfully completed several courses. Now I continue to learn and
+            practice my skills by reading articles and watching training videos.
+            Always trying to learn something new and implement it in my
+            projects. I don't have commercial experience yet, so I'm looking for
+            a team in which I can grow, enjoy my work and just have fun.
           </MainText>
           <ProfilePhoto />
         </ProfileInfo>
         <a
-          href="https://drive.google.com/file/d/11agFQoVxOMPp0dW-p0tsNLOC0pGzE-MK/view?usp=sharing"
+          href="https://drive.google.com/file/d/1xQ4so1W-vgrnnJoDy8grT-lOoDghnXpA/view?usp=sharing"
           target="_blank"
           rel="noreferrer"
         >

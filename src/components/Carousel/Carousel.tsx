@@ -1,13 +1,12 @@
 import { Card } from "../Card/Card";
 import { CarouselContainer, SlideContainer, CarouselBg } from "./style";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 interface CarouselProps {
   cardsDataArr: { image: string }[];
 }
 
 // Pass an array of length at least 3 !!
-
 export const Carousel: React.FC<CarouselProps> = ({ cardsDataArr }) => {
   const [items] = useState([...cardsDataArr].concat(...cardsDataArr));
   const [keys, setKeys] = useState(Object.keys(items));

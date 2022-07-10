@@ -1,14 +1,18 @@
 import styled from "styled-components";
-import { colors } from "../../styles";
+import { colorPalette } from "../../styles";
 
-export const AboutContainer = styled.div`
+export const AboutContainer = styled.section`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative;
   gap: 50px;
   align-items: flex-start;
   padding: 200px 0 25px;
+  position: relative;
+  a {
+    text-decoration: none;
+  }
+
   ::after {
     content: "";
     top: 0;
@@ -16,8 +20,9 @@ export const AboutContainer = styled.div`
     left: -10%;
     height: 100%;
     width: 85%;
-    background-color: white;
+    background-color: ${colorPalette.light.background.lightest};
     z-index: -1;
+
     @media screen and (max-width: 768px) {
       top: 0;
       left: 0;
@@ -25,12 +30,11 @@ export const AboutContainer = styled.div`
       width: 100vw;
     }
   }
-  a {
-    text-decoration: none;
-  }
+
   @media screen and (max-height: 900px) {
     padding: 150px 0 25px;
   }
+
   @media screen and (max-width: 768px) {
     position: static;
     align-items: center;
@@ -66,7 +70,7 @@ export const ProfileSubTitle = styled.h4`
     display: block;
     width: 40px;
     height: 1px;
-    background-color: black;
+    background-color: ${colorPalette.light.primary.darker};
   }
   @media screen and (max-width: 768px) {
     justify-self: center;
@@ -75,7 +79,7 @@ export const ProfileSubTitle = styled.h4`
       display: block;
       width: 40px;
       height: 1px;
-      background-color: black;
+      background-color: ${colorPalette.light.primary.darker};
     }
   }
 `;
@@ -89,8 +93,8 @@ export const ProfilePhoto = styled.div`
   background: url(./img/photo1.png) center center no-repeat;
   background-size: cover;
   border-radius: 100%;
-  border: 10px solid white;
-  background-color: #ebebeb;
+  border: 3px solid #eae7dc;
+  background-color: ${colorPalette.light.background.darker};
   position: relative;
   @media screen and (max-width: 768px) {
     grid-column: 1 / 2;
@@ -105,14 +109,14 @@ export const Social = styled.div`
   display: flex;
   gap: 10px;
   a {
-    color: ${colors.primary};
+    color: ${colorPalette.light.primary.darker};
   }
   svg {
     width: 2rem;
     height: 2rem;
     transition: 0.2s ease;
     :hover {
-      fill: ${colors.secondary};
+      fill: ${colorPalette.light.secondary.darker};
     }
   }
 `;

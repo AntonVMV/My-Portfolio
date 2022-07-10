@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { colorPalette } from "../../styles";
 
-export const WorksContainer = styled.div`
+export const WorksContainer = styled.section`
   height: 100%;
   position: relative;
   padding: 125px 0 20px;
@@ -13,7 +14,7 @@ export const WorksContainer = styled.div`
     position: absolute;
     height: 100%;
     width: 75%;
-    background-color: white;
+    background-color: ${colorPalette.light.background.lightest};
     top: 0;
     left: 50%;
     transform: translateX(-50%);
