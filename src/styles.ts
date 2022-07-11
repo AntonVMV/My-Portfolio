@@ -1,25 +1,7 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-export const colorPalette = {
-  light: {
-    primary: {
-      darker: "#3c3c3c",
-      lighter: "#8e8d8a",
-    },
-    secondary: {
-      darker: "#e85a4f",
-      lighter: "#e98074",
-    },
-    background: {
-      darker: "#e3d3be",
-      lighter: "#eae7dc",
-      lightest: "#f1efe7",
-    },
-  },
-};
-
-export default createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   * {
   margin: 0;
   padding: 0;
@@ -27,13 +9,18 @@ export default createGlobalStyle`
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 html, body, #root, #root > div {
   height: 100%;
 }  
 
 body {
-  background-color: ${colorPalette.light.background.darker};
+  background-color: ${(props) => props.theme.background.darker};
   font-family: "Montserrat", sans-serif;
+  
 }
 `;
 
@@ -49,7 +36,7 @@ export const MainText = styled.p`
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 20px;
-  color: ${colorPalette.light.primary.darker};
+  color: ${(props) => props.theme.primary.darker};
 `;
 
 export const MainTextSmall = styled.p`
@@ -71,7 +58,7 @@ export const MainTextLarge = styled.p`
 export const MainTitle = styled.h2`
   font-size: 42px;
   font-weight: 800;
-  color: ${colorPalette.light.primary.darker};
+  color: ${(props) => props.theme.primary.darker};
   @media screen and (max-width: 768px) {
     font-size: 28px;
   }
@@ -80,14 +67,14 @@ export const MainTitle = styled.h2`
 export const TitleMid = styled.h3`
   font-size: 34px;
   font-weight: 700;
-  color: ${colorPalette.light.primary.darker};
+  color: ${(props) => props.theme.primary.darker};
   @media screen and (max-width: 768px) {
     font-size: 24px;
   }
 `;
 
 export const TitleSm = styled.h4`
-  color: ${colorPalette.light.primary.darker};
+  color: ${(props) => props.theme.primary.darker};
   font-size: 26px;
   font-weight: 600;
   @media screen and (max-width: 768px) {
@@ -96,5 +83,5 @@ export const TitleSm = styled.h4`
 `;
 
 export const Highlighted = styled.span`
-  color: ${colorPalette.light.secondary.darker};
+  color: ${(props) => props.theme.secondary.darker};
 `;

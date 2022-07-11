@@ -1,6 +1,12 @@
 import { Card } from "../Card/Card";
-import { CarouselContainer, SlideContainer, CarouselBg } from "./style";
-import React, { useState } from "react";
+import {
+  CarouselContainer,
+  SlideContainer,
+  CarouselBg,
+  CarouselControls,
+} from "./style";
+import React, { useEffect, useState } from "react";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 interface CarouselProps {
   cardsDataArr: { image: string }[];
@@ -10,17 +16,34 @@ interface CarouselProps {
 export const Carousel: React.FC<CarouselProps> = ({ cardsDataArr }) => {
   const [items] = useState([...cardsDataArr].concat(...cardsDataArr));
   const [keys, setKeys] = useState(Object.keys(items));
+  const [isMoving, setIsMoving] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isMoving) {
+      new Promise((resolve) => {
+        setTimeout(resolve, 800);
+      }).then(() => {
+        setIsMoving(false);
+      });
+    }
+  }, [isMoving]);
 
   const moveLeft = () => {
-    setKeys((prev) => {
-      return prev.map((_, i) => prev[(i + 1) % items.length]);
-    });
+    if (!isMoving) {
+      setIsMoving(true);
+      setKeys((prev) => {
+        return prev.map((_, i) => prev[(i + 1) % items.length]);
+      });
+    }
   };
 
   const moveRight = () => {
-    setKeys((prev) => {
-      return prev.map((_, i) => prev[(i - 1 + items.length) % items.length]);
-    });
+    if (!isMoving) {
+      setIsMoving(true);
+      setKeys((prev) => {
+        return prev.map((_, i) => prev[(i - 1 + items.length) % items.length]);
+      });
+    }
   };
 
   const clickHandler = (e: React.MouseEvent<HTMLDivElement>, pos: string) => {
@@ -35,20 +58,26 @@ export const Carousel: React.FC<CarouselProps> = ({ cardsDataArr }) => {
   };
 
   return (
-    <CarouselBg>
-      <CarouselContainer>
-        {keys.map((pos, index) => {
-          return (
-            <SlideContainer
-              position={parseInt(pos)}
-              key={index}
-              onClick={(e) => clickHandler(e, pos)}
-            >
-              <Card cardData={items[index]} />
-            </SlideContainer>
-          );
-        })}
-      </CarouselContainer>
-    </CarouselBg>
+    <>
+      <CarouselBg>
+        <CarouselContainer>
+          {keys.map((pos, index) => {
+            return (
+              <SlideContainer
+                position={parseInt(pos)}
+                key={index}
+                onClick={(e) => clickHandler(e, pos)}
+              >
+                <Card cardData={items[index]} />
+              </SlideContainer>
+            );
+          })}
+        </CarouselContainer>
+      </CarouselBg>
+      <CarouselControls>
+        <FaArrowLeft onClick={moveLeft} />
+        <FaArrowRight onClick={moveRight} />
+      </CarouselControls>
+    </>
   );
 };

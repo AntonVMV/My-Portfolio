@@ -1,8 +1,11 @@
 import styled, { keyframes, css } from "styled-components";
-import { colorPalette } from "../../styles";
 
 interface TechnologyProps {
   index: number;
+}
+
+interface TechnologyIconProps {
+  isDark: boolean;
 }
 
 interface IsVisible {
@@ -28,6 +31,7 @@ const iconAppear = keyframes`
 export const SkillsBg = styled.div`
   min-height: 100vh;
   position: relative;
+  padding: 80px 0;
   ::after {
     content: "";
     position: absolute;
@@ -35,29 +39,24 @@ export const SkillsBg = styled.div`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: ${colorPalette.light.background.lighter};
-    z-index: -2;
+    background-color: ${(props) => props.theme.background.lighter};
+    z-index: -5;
   }
 `;
 
 export const StyledTechnologies = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  align-items: center;
-  padding: 150px 0 50px;
+  gap: 35px;
+  padding: 70px 0 50px;
   position: relative;
   text-align: center;
   @media screen and (max-width: 768px) {
-    padding: 100px 0 35px;
+    padding: 20px 0 235px;
   }
 `;
 
 export const TechnologiesContainer = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  width: 100%;
-  gap: 5px; */
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -66,16 +65,16 @@ export const TechnologiesContainer = styled.div`
   position: relative;
   padding: 15px;
 
-  ::after {
+  /* ::after {
     content: "";
     position: absolute;
     top: 0;
     width: 100vw;
     height: 100%;
-    background-color: ${colorPalette.light.background.lightest};
+    background-color: ${(props) => props.theme.background.lightest};
     z-index: -1;
     box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
-  }
+  } */
 `;
 
 export const TechnologyItem = styled.div<TechnologyProps>`
@@ -87,42 +86,71 @@ export const TechnologyItem = styled.div<TechnologyProps>`
   animation: ${iconAppear} 1s forwards;
   animation-delay: ${(props) => `${props.index * 100 + 250}ms`};
   opacity: 0;
-  img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-  }
+`;
+
+export const TechnologyIcon = styled.img<TechnologyIconProps>`
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  ${(props) =>
+    props.isDark &&
+    css`
+      filter: drop-shadow(0px 3px 7px rgba(0, 0, 0, 0.3));
+    `}
   @media screen and (max-width: 768px) {
-    img {
-      width: 50px;
-      height: 50px;
-    }
+    width: 50px;
+    height: 50px;
+  }
+`;
+
+export const OtherTech = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 `;
 
 export const TechList = styled.ul`
   padding: 20px 50px;
   list-style: none;
-  background-color: ${colorPalette.light.background.lightest};
+  background-color: ${(props) => props.theme.background.lightest};
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 50%;
-  color: ${colorPalette.light.primary.darker};
+  color: ${(props) => props.theme.primary.darker};
   font-weight: 500;
   position: relative;
-
-  ::after {
+  ::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: ${colorPalette.light.secondary.lighter};
-    left: 20px;
-    top: 20px;
-    box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
+    border: 5px solid ${(props) => props.theme.secondary.darker};
+    left: 15px;
+    top: 15px;
     z-index: -1;
+  }
+
+  ::after {
+    content: "";
+    position: absolute;
+    height: 450px;
+    width: 450px;
+    background: url(./img/frontend.png) center center no-repeat;
+    background-size: contain;
+    top: -100px;
+    right: -500px;
+    z-index: -3;
+
+    @media screen and (max-width: 768px) {
+      height: 300px;
+      width: 300px;
+      top: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   li {
@@ -133,7 +161,7 @@ export const TechList = styled.ul`
       content: "";
       height: 1px;
       width: 20px;
-      background-color: ${colorPalette.light.primary.darker};
+      background-color: ${(props) => props.theme.primary.darker};
     }
   }
 
@@ -177,7 +205,7 @@ const moveRightMob = keyframes`
 export const HSContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 50px 0;
+  padding: 75px 0 50px;
   row-gap: 25px;
   position: relative;
   div {
@@ -194,18 +222,19 @@ export const HSContainer = styled.section`
   h3 {
     grid-column: 1 / -1;
     justify-self: center;
+    margin-bottom: 25px;
   }
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 50px 0 25px;
+    padding: 75px 0 35px;
   }
 `;
 
 export const HSLeft = styled.div<IsVisible>`
   justify-self: flex-end;
   text-align: end;
-  background-color: ${colorPalette.light.background.lightest};
+  background-color: ${(props) => props.theme.background.lightest};
   transform: translateX(10px);
   opacity: 0;
 
@@ -222,7 +251,7 @@ export const HSLeft = styled.div<IsVisible>`
 
 export const HSRight = styled.div<IsVisible>`
   justify-self: flex-start;
-  background-color: ${colorPalette.light.secondary.lighter};
+  background-color: ${(props) => props.theme.secondary.darker};
   color: green;
   transform: translateY(25%) translateX(-10px);
   opacity: 0;
@@ -254,23 +283,25 @@ const slideLeft = keyframes`
 `;
 
 export const EducationContainer = styled.section`
-  margin-top: 75px;
   display: grid;
   grid-template-columns: 3fr 2fr;
+  gap: 25px 50px;
   align-items: center;
-  column-gap: 50px;
-  row-gap: 25px;
+  margin-top: 50px;
   h3 {
     text-align: center;
     grid-column: 1 / -1;
   }
+
+  img {
+    object-fit: contain;
+  }
+
   @media screen and (max-width: 992px) {
     grid-template-columns: 1fr;
-    row-gap: 55px;
-    justify-items: center;
   }
   @media screen and (max-width: 768px) {
-    margin-top: 50px;
+    margin-top: 0;
   }
 `;
 
@@ -279,9 +310,11 @@ export const EducationDescription = styled.div`
   row-gap: 30px;
   text-align: end;
   padding: 50px;
-  background-color: ${colorPalette.light.background.lightest};
+
+  background-color: ${(props) => props.theme.background.lightest};
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
   position: relative;
+  color: ${(props) => props.theme.primary.darker};
   div {
     display: grid;
     row-gap: 15px;
@@ -291,7 +324,7 @@ export const EducationDescription = styled.div`
     position: absolute;
     width: 90%;
     height: 110%;
-    background-color: ${colorPalette.light.secondary.lighter};
+    background-color: ${(props) => props.theme.secondary.darker};
     left: -10%;
     top: -5%;
     box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
@@ -300,6 +333,7 @@ export const EducationDescription = styled.div`
   @media screen and (max-width: 992px) {
     row-gap: 25px;
     padding: 35px;
+    margin: 50px 0 25px;
   }
   @media screen and (max-width: 768px) {
     text-align: start;
@@ -319,41 +353,8 @@ export const Sertificates = styled.div<IsVisible>`
     css`
       animation: ${slideLeft} 1s ease forwards;
     `}
-
   div {
-    position: relative;
-    transition: 0.3s ease;
-    cursor: pointer;
-    :hover {
-      position: relative;
-      transform: scale(110%);
-      z-index: 2;
-      img {
-        filter: blur(3px);
-      }
-      a {
-        display: inline;
-      }
-    }
-  }
-  img {
-    width: 100%;
     box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
-  }
-  a {
-    text-align: center;
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-decoration: none;
-    color: ${colorPalette.light.secondary.darker};
-    z-index: 3;
-    font-weight: 500;
-    :hover {
-      color: ${colorPalette.light.secondary.lighter};
-    }
   }
 
   @media screen and (max-width: 992px) {

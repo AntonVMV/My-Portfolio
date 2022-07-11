@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export const Layout: React.FC = () => {
   const location = useLocation();
+
   return (
     <>
       <Header />

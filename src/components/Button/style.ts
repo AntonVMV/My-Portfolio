@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { colorPalette } from "../../styles";
 
 export const StyledButton = styled.button`
-  background-color: ${colorPalette.light.secondary.darker};
+  background-color: ${(props) => props.theme.secondary.darker};
   text-transform: uppercase;
   font-size: 16px;
-  color: ${colorPalette.light.background.lighter};
+  color: ${(props) => props.theme.background.darker};
   border: none;
   padding: 15px 20px;
   letter-spacing: 1px;
@@ -16,7 +15,7 @@ export const StyledButton = styled.button`
   display: flex;
   gap: 10px;
   :hover {
-    background-color: ${colorPalette.light.secondary.lighter};
+    background-color: ${(props) => props.theme.secondary.lighter};
   }
   :active {
     box-shadow: none;

@@ -10,8 +10,11 @@ import { MainText } from "../../styles";
 import { Button } from "../../components/Button/Button";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { MainTitle, Highlighted } from "../../styles";
+import { useThemeContext } from "../../Context/context";
 
 export const About: React.FC = () => {
+  const { type } = useThemeContext();
+
   return (
     <MainContainer>
       <AboutContainer>
@@ -30,7 +33,9 @@ export const About: React.FC = () => {
             projects. I don't have commercial experience yet, so I'm looking for
             a team in which I can grow, enjoy my work and just have fun.
           </MainText>
-          <ProfilePhoto />
+          <ProfilePhoto isDark={type === "dark"}>
+            <img src="./img/photo1.png" alt="profile" />
+          </ProfilePhoto>
         </ProfileInfo>
         <a
           href="https://drive.google.com/file/d/1xQ4so1W-vgrnnJoDy8grT-lOoDghnXpA/view?usp=sharing"

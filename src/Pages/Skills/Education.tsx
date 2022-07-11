@@ -1,6 +1,8 @@
 import { MainTextLarge, TitleSm, MainTextSmall, TitleMid } from "../../styles";
 import { useRef } from "react";
 import { useIntersection } from "../../hooks/useIntersection";
+import { Card } from "../../components/Card/Card";
+import { certData } from "../../data/certData";
 import {
   EducationContainer,
   EducationDescription,
@@ -35,7 +37,11 @@ export const Education: React.FC = () => {
         </div>
       </EducationDescription>
       <Sertificates isVisible={intersection}>
-        <div>
+        {certData.map((item, index) => {
+          return <Card key={index} cardData={item} />;
+        })}
+
+        {/* <div>
           <a
             href="https://certificate.ithillel.ua/ru/view/42685634"
             target="_blank"
@@ -54,7 +60,7 @@ export const Education: React.FC = () => {
             Check sertificate
           </a>
           <img src="./img/cert2.png" alt="certificate" />
-        </div>
+        </div> */}
       </Sertificates>
     </EducationContainer>
   );

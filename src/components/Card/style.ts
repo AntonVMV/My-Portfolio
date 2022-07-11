@@ -1,4 +1,3 @@
-import { colorPalette } from "../../styles";
 import styled from "styled-components";
 
 interface CardContainerProps {
@@ -8,8 +7,7 @@ interface CardContainerProps {
 export const CardContainer = styled.div<CardContainerProps>`
   width: 100%;
   height: 100%;
-  color: ${colorPalette.light.background.lighter};
-  box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
+  color: ${(props) => props.theme.background.lighter};
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -19,17 +17,17 @@ export const CardContainer = styled.div<CardContainerProps>`
     }
   }
   img {
-    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 1s ease;
     z-index: -1;
+    position: relative;
   }
 `;
 
 export const CardDesription = styled.div`
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.85);
   opacity: 0;
   transition: opacity 0.2s ease;
   width: 100%;
@@ -40,12 +38,15 @@ export const CardDesription = styled.div`
   justify-content: center;
   gap: 15px;
   padding: 0 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
   div {
     display: flex;
     gap: 30px;
   }
   p {
-    color: ${colorPalette.light.background.lighter};
+    color: #ebebeb;
     text-align: center;
     grid-column: 1 / -1;
     font-size: 18px;
@@ -60,7 +61,7 @@ export const CardDesription = styled.div`
       display: block;
       width: 0;
       height: 1px;
-      background-color: ${colorPalette.light.background.lighter};
+      background-color: ${(props) => props.theme.background.lighter};
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -74,11 +75,11 @@ export const CardDesription = styled.div`
   a {
     text-decoration: none;
     font-size: 16px;
-    color: ${colorPalette.light.secondary.darker};
+    color: ${(props) => props.theme.secondary.darker};
     z-index: 99;
     transition: 0.2s ease;
     :hover {
-      color: ${colorPalette.light.secondary.lighter};
+      color: ${(props) => props.theme.secondary.lighter};
     }
     @media screen and (max-width: 576px) {
       font-size: 14px;

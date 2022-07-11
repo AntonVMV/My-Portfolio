@@ -22,6 +22,11 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
               Watch build
             </a>
           )}
+          {cardData.checkSert && (
+            <a href={cardData.checkSert} target="_blank" rel="noreferrer">
+              Check cerfificate
+            </a>
+          )}
         </div>
       </CardDesription>
     </CardContainer>

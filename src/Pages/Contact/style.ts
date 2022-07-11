@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colorPalette } from "../../styles";
 
 export const CotactContainer = styled.section`
   display: grid;
@@ -23,7 +22,7 @@ export const CotactContainer = styled.section`
     transform: translateX(-50%);
     width: 65%;
     height: 100%;
-    background-color: ${colorPalette.light.background.lightest};
+    background-color: ${(props) => props.theme.background.lightest};
     z-index: -1;
   }
 
@@ -38,13 +37,13 @@ export const Contacts = styled.div`
   align-self: center;
   display: flex;
   flex-direction: column;
-  background-color: ${colorPalette.light.background.lighter};
+  background-color: ${(props) => props.theme.background.lighter};
   padding: 50px;
   gap: 15px;
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
   h3 {
     font-size: 16px;
-    color: ${colorPalette.light.secondary.darker};
+    color: ${(props) => props.theme.secondary.darker};
     text-transform: uppercase;
   }
   div {
@@ -58,21 +57,22 @@ export const Contacts = styled.div`
     transition: 0.2s ease;
     @media screen and (min-width: 769px) {
       :hover {
-        color: ${colorPalette.light.secondary.lighter};
+        color: ${(props) => props.theme.secondary.lighter};
       }
     }
   }
 
   a {
     text-decoration: none;
-    color: ${colorPalette.light.primary.darker};
+    color: ${(props) => props.theme.primary.darker};
     transition: 0.2s ease;
     :hover {
-      color: ${colorPalette.light.secondary.lighter};
+      color: ${(props) => props.theme.secondary.lighter};
     }
   }
 
   svg {
+    fill: ${(props) => props.theme.primary.darker};
     width: 1.5rem;
     height: 1.5rem;
   }

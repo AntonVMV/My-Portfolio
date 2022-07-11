@@ -1,5 +1,8 @@
-import styled from "styled-components";
-import { colorPalette } from "../../styles";
+import styled, { css } from "styled-components";
+
+interface ProfilePhotoProps {
+  isDark: boolean;
+}
 
 export const AboutContainer = styled.section`
   display: flex;
@@ -20,7 +23,7 @@ export const AboutContainer = styled.section`
     left: -10%;
     height: 100%;
     width: 85%;
-    background-color: ${colorPalette.light.background.lightest};
+    background-color: ${(props) => props.theme.background.lightest};
     z-index: -1;
 
     @media screen and (max-width: 768px) {
@@ -65,12 +68,13 @@ export const ProfileSubTitle = styled.h4`
   align-items: center;
   justify-self: flex-end;
   gap: 15px;
+  color: ${(props) => props.theme.primary.darker};
   ::before {
     content: "";
     display: block;
     width: 40px;
     height: 1px;
-    background-color: ${colorPalette.light.primary.darker};
+    background-color: ${(props) => props.theme.primary.darker};
   }
   @media screen and (max-width: 768px) {
     justify-self: center;
@@ -79,23 +83,37 @@ export const ProfileSubTitle = styled.h4`
       display: block;
       width: 40px;
       height: 1px;
-      background-color: ${colorPalette.light.primary.darker};
+      background-color: ${(props) => props.theme.primary.darker};
     }
   }
 `;
 
-export const ProfilePhoto = styled.div`
+export const ProfilePhoto = styled.div<ProfilePhotoProps>`
   justify-self: center;
   grid-row: 1 / -1;
   grid-column: 2 / -1;
   width: 350px;
   height: 350px;
-  background: url(./img/photo1.png) center center no-repeat;
+  /* background: url(./img/photo1.png) center center no-repeat; */
   background-size: cover;
   border-radius: 100%;
-  border: 3px solid #eae7dc;
-  background-color: ${colorPalette.light.background.darker};
+  border: 3px solid ${(props) => props.theme.background.lighter};
+  background-color: ${(props) => props.theme.background.darker};
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: cover;
+    ${(props) =>
+      props.isDark &&
+      css`
+        filter: grayscale(1);
+      `}
+  }
+
   @media screen and (max-width: 768px) {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
@@ -109,14 +127,14 @@ export const Social = styled.div`
   display: flex;
   gap: 10px;
   a {
-    color: ${colorPalette.light.primary.darker};
+    color: ${(props) => props.theme.primary.darker};
   }
   svg {
     width: 2rem;
     height: 2rem;
     transition: 0.2s ease;
     :hover {
-      fill: ${colorPalette.light.secondary.darker};
+      fill: ${(props) => props.theme.secondary.darker};
     }
   }
 `;

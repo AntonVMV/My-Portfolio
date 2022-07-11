@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { colorPalette } from "../../styles";
 
 interface BurgerContainerProps {
   isActive: boolean;
@@ -19,7 +18,7 @@ export const BurgerContainer = styled.div<BurgerContainerProps>`
     height: 5px;
     border-radius: 2px;
     transition: 0.3s ease;
-    background-color: ${colorPalette.light.primary.darker};
+    background-color: ${(props) => props.theme.primary.darker};
     :nth-child(1) {
       ${(props) =>
         props.isActive

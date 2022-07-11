@@ -13,7 +13,7 @@ export const useIntersection = (ref: RefObject<Element>) => {
           observer.unobserve(entries[0].target);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
 
     if (ref.current) observer.observe(ref.current);

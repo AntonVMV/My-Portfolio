@@ -2,15 +2,12 @@ import {
   TechnologiesContainer,
   TechnologyItem,
   StyledTechnologies,
+  TechnologyIcon,
   TechList,
+  OtherTech,
 } from "./style";
-import {
-  TitleMid,
-  MainText,
-  TitleSm,
-  Highlighted,
-  MainContainer,
-} from "../../styles";
+import { TitleMid, MainText, TitleSm, Highlighted } from "../../styles";
+import { useThemeContext } from "../../Context/context";
 
 interface TechnologiesProps {
   data: {
@@ -24,16 +21,22 @@ export const Technologies: React.FC<TechnologiesProps> = ({
   data,
   otherTech,
 }) => {
+  const { type } = useThemeContext();
+
   return (
     <StyledTechnologies>
       <TitleMid>
-        <Highlighted>Technologies</Highlighted> I work with
+        <Highlighted>Tools</Highlighted> I work with
       </TitleMid>
       <TechnologiesContainer>
         {data.map((item, index) => {
           return (
             <TechnologyItem key={index} index={index}>
-              <img src={item.image} alt="techology" />
+              <TechnologyIcon
+                src={item.image}
+                alt="techology"
+                isDark={type === "dark"}
+              />
               <MainText>{item.name}</MainText>
             </TechnologyItem>
           );
@@ -42,15 +45,18 @@ export const Technologies: React.FC<TechnologiesProps> = ({
       <TitleSm>
         ... and others that I used in <Highlighted>projects</Highlighted>
       </TitleSm>
-      <TechList>
-        {otherTech.map((item, index) => {
-          return (
-            <li key={index}>
-              <MainText>{item}</MainText>
-            </li>
-          );
-        })}
-      </TechList>
+
+      <OtherTech>
+        <TechList>
+          {otherTech.map((item, index) => {
+            return (
+              <li key={index}>
+                <MainText>{item}</MainText>
+              </li>
+            );
+          })}
+        </TechList>
+      </OtherTech>
     </StyledTechnologies>
   );
 };

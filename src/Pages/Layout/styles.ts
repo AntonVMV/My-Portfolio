@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledMain = styled.main`
   height: 100%;
-  overflow-x: hidden;
   position: relative;
   .pages {
     width: 100%;

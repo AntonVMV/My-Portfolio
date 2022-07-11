@@ -1,16 +1,15 @@
 import styled from "styled-components";
-import { colorPalette } from "../../styles";
 
 export const StyledForm = styled.form`
   padding: 50px;
-  background-color: ${colorPalette.light.background.lighter};
+  background-color: ${(props) => props.theme.background.lighter};
   display: grid;
   align-items: center;
   gap: 20px 10px;
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
   input {
     height: 30px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 0;
     font-size: 15px;
   }
@@ -21,13 +20,23 @@ export const StyledForm = styled.form`
   }
   input,
   textarea {
-    font-size: 15px;
-    background-color: ${colorPalette.light.background.lighter};
-    border: 1px solid ${colorPalette.light.primary.lighter};
+    font-size: 16px;
+    background-color: ${(props) => props.theme.background.lighter};
+    border: 1px solid ${(props) => props.theme.primary.lighter};
     transition: border-color 0.2s ease;
+    color: ${(props) => props.theme.primary.darker};
     :focus {
       outline: 0;
-      border-color: ${colorPalette.light.secondary.lighter};
+      border-color: ${(props) => props.theme.secondary.lighter};
+    }
+    :-webkit-autofill {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: ${(props) => props.theme.primary.darker};
+    }
+    ::placeholder {
+      color: ${(props) => props.theme.primary.lighter};
+      font-size: 14px;
     }
   }
   button {
@@ -35,7 +44,7 @@ export const StyledForm = styled.form`
   }
   h3 {
     font-size: 18px;
-    color: ${colorPalette.light.secondary.darker};
+    color: ${(props) => props.theme.secondary.darker};
     text-transform: uppercase;
   }
   @media screen and (max-width: 768px) {

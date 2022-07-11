@@ -9,9 +9,9 @@ export const Works: React.FC = () => {
     <WorksContainer>
       <MainContainer>
         <MainTitle>
-          Several <Highlighted>projects</Highlighted> that I completed during
-          <Highlighted> studies</Highlighted>. I hope this list will{" "}
-          <Highlighted>grow</Highlighted>.
+          Some <Highlighted>projects</Highlighted> <br />
+          that I completed during
+          <Highlighted> studies</Highlighted>
         </MainTitle>
       </MainContainer>
       <Carousel cardsDataArr={data} />
