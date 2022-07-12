@@ -1,6 +1,6 @@
 import { MainContainer } from "../../styles";
 import { NavList, Navigation } from "./styles";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BurgerEl } from "../BurgerEl/BurgerEl";
 import React, { useState } from "react";
 import { useThemeContext } from "../../Context/context";
@@ -10,9 +10,6 @@ const tabs = ["about", "skills", "works", "contact"];
 
 export const NavBar: React.FC = () => {
   const [isBurgerOpen, setBurgerOpen] = useState<boolean>(false);
-
-  const location = useLocation();
-
   const { toggle } = useThemeContext();
 
   const clickHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
