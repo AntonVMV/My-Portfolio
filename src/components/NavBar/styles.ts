@@ -7,8 +7,10 @@ interface NavListProps {
 export const Navigation = styled.nav`
   background-color: ${(props) => props.theme.background.lighter};
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
+  position: relative;
   @media screen and (max-width: 768px) {
     padding: 15px 0;
+    width: max-content;
   }
 `;
 
@@ -23,6 +25,7 @@ export const NavList = styled.ul<NavListProps>`
   padding: 20px 0;
   text-transform: uppercase;
   align-items: center;
+  z-index: 5;
   a {
     display: inline-block;
     color: ${(props) => props.theme.primary.darker};

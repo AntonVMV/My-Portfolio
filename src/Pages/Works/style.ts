@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const WorksContainer = styled.section`
-  height: 100%;
+  min-height: 100vh;
   position: relative;
   padding: 125px 0 20px;
   h2 {

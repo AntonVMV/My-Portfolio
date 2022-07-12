@@ -10,15 +10,14 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 html {
-  overflow-x: hidden;
   a:focus {
     outline: 0;
     text-decoration: none;
-}
+  }
 }
 
 html, body, #root, #root > div {
-  height: 100%;
+  min-height: 100vh;
 }  
 
 body {
@@ -26,7 +25,6 @@ body {
   font-family: "Montserrat", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
-
 `;
 
 export const MainContainer = styled.div`

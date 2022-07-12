@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledMain = styled.main`
   height: 100%;
   position: relative;
+  overflow-x: clip;
   .pages {
     width: 100%;
     height: 100%;
