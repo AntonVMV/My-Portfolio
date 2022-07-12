@@ -138,7 +138,7 @@ export const TechList = styled.ul`
     position: absolute;
     height: 450px;
     width: 450px;
-    background: url(./img/frontend.png) center center no-repeat;
+    background: url(./img/frontend.webp) center center no-repeat;
     background-size: contain;
     top: -100px;
     right: -500px;

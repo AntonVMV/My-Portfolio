@@ -34,7 +34,7 @@ export const About: React.FC = () => {
             a team in which I can grow, enjoy my work and just have fun.
           </MainText>
           <ProfilePhoto isDark={type === "dark"}>
-            <img src="./img/photo1.png" alt="profile" />
+            <img src="./img/photo.webp" alt="profile" />
           </ProfilePhoto>
         </ProfileInfo>
         <a
