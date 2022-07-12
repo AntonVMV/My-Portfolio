@@ -9,7 +9,6 @@ export const Navigation = styled.nav`
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
   @media screen and (max-width: 768px) {
     padding: 15px 0;
-    position: fixed;
   }
 `;
 

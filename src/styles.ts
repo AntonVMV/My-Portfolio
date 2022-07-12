@@ -11,6 +11,10 @@ export const GlobalStyles = createGlobalStyle`
 
 html {
   overflow-x: hidden;
+  a:focus {
+    outline: 0;
+    text-decoration: none;
+}
 }
 
 html, body, #root, #root > div {
@@ -20,8 +24,9 @@ html, body, #root, #root > div {
 body {
   background-color: ${(props) => props.theme.background.darker};
   font-family: "Montserrat", sans-serif;
-  
+  -webkit-tap-highlight-color: transparent;
 }
+
 `;
 
 export const MainContainer = styled.div`

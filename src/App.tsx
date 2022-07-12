@@ -24,6 +24,7 @@ function App() {
             <Route path="skills" element={<Skills />} />
             <Route path="works" element={<Works />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<Navigate to={"about"} replace />} />
           </Route>
         </Routes>
       </BrowserRouter>

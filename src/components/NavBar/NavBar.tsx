@@ -1,8 +1,8 @@
 import { MainContainer } from "../../styles";
 import { NavList, Navigation } from "./styles";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { BurgerEl } from "../BurgerEl/BurgerEl";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useThemeContext } from "../../Context/context";
 import { ThemeButton } from "../ThemeButton/ThemeButton";
 
@@ -11,7 +11,18 @@ const tabs = ["about", "skills", "works", "contact"];
 export const NavBar: React.FC = () => {
   const [isBurgerOpen, setBurgerOpen] = useState<boolean>(false);
 
+  const location = useLocation();
+
   const { toggle } = useThemeContext();
+
+  const clickHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    }
+    if (e.currentTarget.className === "active") {
+      e.preventDefault();
+    }
+  };
 
   return (
     <Navigation>
@@ -24,7 +35,7 @@ export const NavBar: React.FC = () => {
           {tabs.map((item, index) => {
             return (
               <li key={index}>
-                <NavLink to={item} onClick={() => setBurgerOpen(false)}>
+                <NavLink to={item} onClick={clickHandler}>
                   {item}
                 </NavLink>
               </li>

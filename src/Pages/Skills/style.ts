@@ -65,7 +65,7 @@ export const TechnologiesContainer = styled.div`
   position: relative;
   padding: 15px;
 
-  /* ::after {
+  ::after {
     content: "";
     position: absolute;
     top: 0;
@@ -74,7 +74,7 @@ export const TechnologiesContainer = styled.div`
     background-color: ${(props) => props.theme.background.lightest};
     z-index: -1;
     box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
-  } */
+  }
 `;
 
 export const TechnologyItem = styled.div<TechnologyProps>`
