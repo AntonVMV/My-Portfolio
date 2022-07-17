@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ToggleContainerProps {
-  isOn: boolean;
+  isDark: boolean;
 }
 
 export const ToggleContainer = styled.div<ToggleContainerProps>`
@@ -24,7 +24,7 @@ export const ToggleContainer = styled.div<ToggleContainerProps>`
     transform: translateY(-50%);
     transition: 0.2s ease;
 
-    left: ${(props) => (props.isOn ? "50%" : "5%")};
+    left: ${(props) => (props.isDark ? "50%" : "5%")};
     border-radius: 100%;
     background-color: ${(props) => props.theme.secondary.darker};
   }

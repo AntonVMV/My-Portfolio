@@ -18,4 +18,5 @@ export interface CustomTheme {
     lighter: string;
     lightest: string;
   };
+  warning: string;
 }

@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { CustomTheme } from "../styled";
 
-export const themePalette = {
+const themePalette = {
   light: {
     primary: {
       darker: "#3c3c3c",
@@ -16,6 +17,7 @@ export const themePalette = {
       lighter: "#eae7dc",
       lightest: "#f1efe7",
     },
+    warning: "#ff4040",
   },
   dark: {
     primary: {
@@ -31,6 +33,7 @@ export const themePalette = {
       lighter: "#6b6e70",
       lightest: "#8c8b90",
     },
+    warning: "#fc836d",
   },
 };
 
@@ -53,10 +56,13 @@ export const useThemeContext = () => {
 };
 
 export const AppThemeProvider: React.FC<ProviderProps> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState<ThemeType>("dark");
+  const [currentTheme, setCurrentTheme] = useLocalStorage<ThemeType>(
+    "dark",
+    "theme"
+  );
 
   const toggleHandler = () => {
-    setCurrentTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setCurrentTheme(currentTheme === "dark" ? "light" : "dark");
   };
 
   const value = {
