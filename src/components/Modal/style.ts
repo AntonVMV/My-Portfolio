@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalElement = styled.div`
-  position: absolute;
+  position: fixed;
   right: 50px;
   bottom: 50px;
   display: flex;
@@ -19,6 +19,13 @@ export const ModalElement = styled.div`
   svg {
     height: 2rem;
     width: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    left: 50%;
+    right: auto;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
   }
 
   @keyframes test {
