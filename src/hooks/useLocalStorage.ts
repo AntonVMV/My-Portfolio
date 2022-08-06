@@ -16,7 +16,6 @@ export const useLocalStorage = <T>(
   const [localValue, setLocalValue] = useState<T>(getLocalValue());
 
   useEffect(() => {
-    console.log("trigger");
     localStorage.setItem(key, JSON.stringify(localValue));
   }, [localValue]);
 

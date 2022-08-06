@@ -1,18 +1,21 @@
 import styled, { keyframes, css } from "styled-components";
 
-interface TechnologyProps {
-  index: number;
-}
-
-interface TechnologyIconProps {
-  isDark: boolean;
-}
-
 interface IsVisible {
   isVisible: boolean;
 }
 
-// Technologies
+interface ITool {
+  x: number;
+  y: number;
+  index: number;
+}
+
+interface IImage {
+  angle: number;
+  index: number;
+}
+
+//Tools
 
 const iconAppear = keyframes` 
   0% {
@@ -27,6 +30,163 @@ const iconAppear = keyframes`
     transform: scale(100%);
   }
 `;
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  position: relative;
+  margin-bottom: 200px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: auto;
+    margin-bottom: 0;
+    align-self: flex-end;
+  }
+  @media screen and (max-width: 480px) {
+    grid-template-rows: auto 270px;
+  }
+`;
+
+export const ToolSelector = styled.div`
+  position: relative;
+  width: 450px;
+  height: 500px;
+  @media screen and (max-width: 768px) {
+    justify-self: flex-end;
+    width: 300px;
+    height: 350px;
+    grid-row: 1 / 2;
+  }
+  @media screen and (max-width: 480px) {
+    width: 200px;
+    height: 230px;
+  }
+`;
+
+export const Content = styled.div`
+  position: relative;
+  padding: 25px 0 0 25px;
+  img {
+    position: absolute;
+    height: 100%;
+    right: -165px;
+    bottom: -145px;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 0;
+    img {
+      position: absolute;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    img {
+      right: 190px;
+      top: -250px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    img {
+      right: 120px;
+      top: -190px;
+    }
+  }
+`;
+
+export const Tool = styled.div<ITool>`
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  left: ${(props) => props.x + "%"};
+  bottom: ${(props) => props.y + "%"};
+  transition: 0.1s linear;
+  cursor: pointer;
+  opacity: 0;
+  animation: ${iconAppear} 1s forwards;
+  animation-delay: ${(props) => `${props.index * 100 + 250}ms`};
+  transform: scale(100%);
+  svg {
+    width: 100%;
+    height: 100%;
+    transition: 0.2s ease;
+    :hover {
+      transform: scale(120%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    width: 55px;
+    height: 55px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 37px;
+    height: 37px;
+  }
+`;
+
+export const Hand = styled.div<IImage>`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 450px;
+  position: absolute;
+  left: -210px;
+  bottom: 0px;
+  transform: ${(props) => `rotate(-${props.angle}deg)`};
+  transition: 0.2s linear;
+  img {
+    transform: translateX(-27px);
+    grid-column: 2 / -1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: ${(props) =>
+      `drop-shadow(${props.index - 4}px ${
+        props.index - 2
+      }px 4px rgba(0,0,0,0.4))`};
+    transition: 0.2s linear;
+  }
+  @media screen and (max-width: 768px) {
+    width: 350px;
+    left: -175px;
+    img {
+      transform: translateX(-18px);
+    }
+  }
+  @media screen and (max-width: 480px) {
+    width: 250px;
+    left: -125px;
+    img {
+      transform: translateX(-18px);
+    }
+  }
+`;
+
+export const Dialog = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  position: relative;
+  max-width: 60%;
+  min-height: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 5;
+  transition: 0.2s linear;
+  box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+  }
+`;
+
+// Technologies
 
 export const SkillsBg = styled.div`
   min-height: 100vh;
@@ -48,58 +208,19 @@ export const StyledTechnologies = styled.section`
   display: flex;
   flex-direction: column;
   gap: 35px;
-  padding: 70px 0 50px;
+  padding: 50px 0 50px;
   position: relative;
   text-align: center;
+  h2 {
+    max-width: 75%;
+    margin: 0 auto;
+  }
   @media screen and (max-width: 768px) {
     padding: 20px 0 235px;
-  }
-`;
-
-export const TechnologiesContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-around;
-  gap: 15px 5px;
-  position: relative;
-  padding: 15px;
-
-  ::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100%;
-    background-color: ${(props) => props.theme.background.lightest};
-    z-index: -1;
-    box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
-  }
-`;
-
-export const TechnologyItem = styled.div<TechnologyProps>`
-  min-width: 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  animation: ${iconAppear} 1s forwards;
-  animation-delay: ${(props) => `${props.index * 100 + 250}ms`};
-  opacity: 0;
-`;
-
-export const TechnologyIcon = styled.img<TechnologyIconProps>`
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  ${(props) =>
-    props.isDark &&
-    css`
-      filter: drop-shadow(0px 3px 7px rgba(0, 0, 0, 0.3));
-    `}
-  @media screen and (max-width: 768px) {
-    width: 50px;
-    height: 50px;
+    h3 {
+      max-width: 90%;
+      margin: 0 auto;
+    }
   }
 `;
 
@@ -143,7 +264,6 @@ export const TechList = styled.ul`
     top: -100px;
     right: -500px;
     z-index: -3;
-
     @media screen and (max-width: 768px) {
       height: 300px;
       width: 300px;

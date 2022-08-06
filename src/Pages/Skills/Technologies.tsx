@@ -1,50 +1,21 @@
-import {
-  TechnologiesContainer,
-  TechnologyItem,
-  StyledTechnologies,
-  TechnologyIcon,
-  TechList,
-  OtherTech,
-} from "./style";
-import { TitleMid, MainText, TitleSm, Highlighted } from "../../styles";
-import { useThemeContext } from "../../Context/context";
+import { StyledTechnologies, TechList, OtherTech } from "./style";
+import { TitleMid, MainTitle, MainText, Highlighted } from "../../styles";
+import { techologies, otherTech } from "../../data/skillsData";
+import { Tools } from "./Tools";
 
-interface TechnologiesProps {
-  data: {
-    name: string;
-    image: string;
-  }[];
-  otherTech: string[];
-}
-
-export const Technologies: React.FC<TechnologiesProps> = ({
-  data,
-  otherTech,
-}) => {
-  const { type } = useThemeContext();
-
+export const Technologies: React.FC = () => {
   return (
     <StyledTechnologies>
+      <MainTitle>
+        Let me tell you a little about my knowledge level of development{" "}
+        <Highlighted>tools</Highlighted>
+      </MainTitle>
+
+      <Tools data={techologies} />
+
       <TitleMid>
-        <Highlighted>Tools</Highlighted> I work with
+        . . . some other tools I used in <Highlighted>projects</Highlighted>
       </TitleMid>
-      <TechnologiesContainer>
-        {data.map((item, index) => {
-          return (
-            <TechnologyItem key={index} index={index}>
-              <TechnologyIcon
-                src={item.image}
-                alt="techology"
-                isDark={type === "dark"}
-              />
-              <MainText>{item.name}</MainText>
-            </TechnologyItem>
-          );
-        })}
-      </TechnologiesContainer>
-      <TitleSm>
-        ... and others that I used in <Highlighted>projects</Highlighted>
-      </TitleSm>
 
       <OtherTech>
         <TechList>
