@@ -14,6 +14,13 @@ export const data = [
     linkGh: "https://github.com/AntonVMV/abz-test-task",
   },
   {
+    image: "./img/hotels.webp",
+    description:
+      "Hotels SPA. You can seach hotels by countries, watch information, add to favorites. All hotel data is fake. Implemented user registration and authorization on the frontend and backend. Adding hotels to favorites is available only after registation/login. Backend is hosted on Heroku, so there may be delay while first run. Tools: react, redux, redux-toolkit, rtk query, react-hook-form, react-router, framer-motion.",
+    linkBuild: "https://hotels-xi.vercel.app/",
+    linkGh: "https://github.com/AntonVMV/hotels",
+  },
+  {
     image: "./img/movies.webp",
     description:
       "Movie data SPA. Search for movies, view info and trailers, different filters (by release date, rating, etc.). All data provides by MovieDB api. Tools: react, redux, redux-thunk.",

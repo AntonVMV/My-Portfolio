@@ -12,7 +12,7 @@ export const Tools: React.FC<ToolProps> = ({ data }) => {
   const [activeEl, setActiveEl] = useState(0);
   const length = data.length;
   const radius = 80;
-  const arc = (Math.PI / 2) * (1 / length);
+  const arc = Math.PI / 2 / length;
 
   return (
     <Container>
