@@ -1,11 +1,19 @@
 import { ButtonHTMLAttributes } from "react";
 import { StyledButton } from "./style";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
-  text: string;
+  styleType?: "primary" | "secondary";
 }
 
-export const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
-  return <StyledButton onClick={onClick}>{text}</StyledButton>;
+export const Button: React.FC<ButtonProps> = ({
+  onClick,
+  children,
+  styleType = "primary",
+}) => {
+  return (
+    <StyledButton onClick={onClick} styleType={styleType}>
+      {children}
+    </StyledButton>
+  );
 };

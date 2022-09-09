@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { CotactContainer, Contacts } from "./style";
 import { MainContainer } from "../../styles";
-import { Form } from "../../components/Form/Form";
+import { EmailForm } from "../../components/EmailForm/EmailForm";
 import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from "react-icons/ai";
 import { FaTelegram } from "react-icons/fa";
 import { MainText, MainTitle, Highlighted } from "../../styles";
 import { WithTooltip } from "../../components/WithTooltip/WithTooltip";
-import { emailjsRequest } from "../../request/emailjsRequest";
 import { MainPortal } from "../../MainPortal/MainPortal";
 import { Modal } from "../../components/Modal/Modal";
+import { IForm } from "../../components/types";
+import { sendEmail } from "../../controller/messageController";
 
 export const Contact: React.FC = () => {
   const [modalText, setModalText] = useState<string | null>(null);
@@ -19,8 +20,13 @@ export const Contact: React.FC = () => {
       .then(() => setModalText("Copied to clipboard"));
   };
 
-  const emailSendHandler = (data: HTMLFormElement) => {
-    emailjsRequest(data).then(() => setModalText("Sent successfully"));
+  const sendEmailHandler = async (data: IForm) => {
+    try {
+      await sendEmail(data);
+      setModalText("Success");
+    } catch (e) {
+      setModalText("Server error");
+    }
   };
 
   return (
@@ -31,7 +37,7 @@ export const Contact: React.FC = () => {
           If I managed to interest you, <Highlighted>contact me</Highlighted> in
           any convenient way.
         </MainTitle>
-        <Form onSubmit={emailSendHandler} />
+        <EmailForm submitHnd={sendEmailHandler} />
         <Contacts>
           <h3>My contacts:</h3>
           <div>

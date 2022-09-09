@@ -1,39 +1,30 @@
 import React from "react";
 import { Button } from "../Button/Button";
-import { useRef } from "react";
 import { StyledForm } from "./styles";
 import { useForm } from "react-hook-form";
 import { Input } from "../Input/Input";
 import { TextArea } from "../TextArea/TextArea";
+import { IForm } from "../types";
 
-interface FormProps {
-  onSubmit: (data: HTMLFormElement) => void;
+interface EmailFormProps {
+  submitHnd: (data: IForm) => void;
 }
 
-interface IForm {
-  name: string;
-  email: string;
-  message: string;
-}
-
-export const Form: React.FC<FormProps> = ({ onSubmit }) => {
+export const EmailForm: React.FC<EmailFormProps> = ({ submitHnd }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<IForm>();
-  const form = useRef<HTMLFormElement>(null);
 
-  const submitHandler = () => {
-    if (form.current) {
-      onSubmit(form.current);
-      reset();
-    }
+  const submitHandler = async (data: IForm) => {
+    submitHnd(data);
+    reset();
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(submitHandler)} ref={form}>
+    <StyledForm onSubmit={handleSubmit(submitHandler)}>
       <h3>send an email:</h3>
       <Input
         {...register("name", {
@@ -64,7 +55,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
         placeholder="Your message"
         error={errors.message}
       />
-      <Button text="Send" type="submit" />
+      <Button type="submit">Send</Button>
     </StyledForm>
   );
 };

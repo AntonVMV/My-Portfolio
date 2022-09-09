@@ -42,7 +42,7 @@ export const About: React.FC = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <Button text="download cv" />
+          <Button>donwload cv</Button>
         </a>
         <Social>
           <a

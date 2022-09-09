@@ -14,7 +14,7 @@ export const StyledTextArea = styled.textarea<StyledTextAreaProps>`
   padding: 10px;
   font-size: 16px;
   width: 100%;
-  background-color: ${(props) => props.theme.background.lighter};
+  background-color: transparent;
   border: 1px solid
     ${(props) =>
       props.isError ? props.theme.warning : props.theme.primary.lighter};

@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const ModalElement = styled.div`
   position: fixed;
-  right: 50px;
+  left: 50%;
   bottom: 50px;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 15px;

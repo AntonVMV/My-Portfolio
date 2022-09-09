@@ -1,14 +1,11 @@
 import styled from "styled-components";
-
-interface StyledInputProps {
-  isError: boolean;
-}
+import { InputProps } from "./Input";
 
 export const InputContainer = styled.div`
   position: relative;
 `;
 
-export const StyledInput = styled.input<StyledInputProps>`
+export const StyledInput = styled.input<InputProps>`
   height: 30px;
   padding: 15px;
   border-radius: 0;
@@ -16,10 +13,10 @@ export const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   border-color: red;
   font-size: 16px;
-  background-color: ${(props) => props.theme.background.lighter};
+  background-color: transparent;
   border: 1px solid
     ${(props) =>
-      props.isError ? props.theme.warning : props.theme.primary.lighter};
+      props.error ? props.theme.warning : props.theme.primary.lighter};
   transition: border-color 0.2s ease;
   color: ${(props) => props.theme.primary.darker};
   :focus {
@@ -38,6 +35,9 @@ export const StyledInput = styled.input<StyledInputProps>`
 `;
 
 export const StyledError = styled.span`
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 500;
   position: absolute;
   bottom: -22px;
   left: 0;

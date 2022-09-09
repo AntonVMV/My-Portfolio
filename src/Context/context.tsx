@@ -33,7 +33,7 @@ const themePalette = {
       lighter: "#6b6e70",
       lightest: "#8c8b90",
     },
-    warning: "#fc836d",
+    warning: "#ab1a26",
   },
 };
 
