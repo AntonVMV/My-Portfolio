@@ -25,12 +25,21 @@ export const PopupContainer = styled.div`
       transition: opacity 300ms, transform 300ms;
     }
   }
+
+  @media screen and (max-width: 480px) {
+    bottom: 20px;
+    right: 20px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
   position: absolute;
   right: -25px;
   bottom: -25px;
+  @media screen and (max-width: 480px) {
+    right: -15px;
+    bottom: -15px;
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -44,6 +53,7 @@ export const FormContainer = styled.div`
   border-radius: 6px;
   position: relative;
   transition: 0.5s 0.5s ease;
+  text-align: center;
   svg {
     width: 20px;
     height: 20px;
@@ -57,24 +67,14 @@ export const FormContainer = styled.div`
       transform: scale(120%);
     }
   }
+  @media screen and (max-width: 768px) {
+    max-width: 80vw;
+  }
 `;
 
 export const PopupForm = styled.form`
   margin-top: 20px;
-  width: 400px;
+  width: 100%;
   display: grid;
   row-gap: 30px;
-`;
-
-export const Loading = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  p {
-    color: ${(props) => props.theme.primary.darker};
-  }
 `;

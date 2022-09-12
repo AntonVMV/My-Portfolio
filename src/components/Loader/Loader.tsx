@@ -1,8 +1,12 @@
 import { LoaderContainer } from "./styles";
 
-export const Loader: React.FC = () => {
+export interface LoaderProps {
+  size?: "s" | "m";
+}
+
+export const Loader: React.FC<LoaderProps> = ({ size = "m" }) => {
   return (
-    <LoaderContainer className="loader">
+    <LoaderContainer className="loader" size={size}>
       <div />
       <div />
       <div />

@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { LoaderProps } from "./Loader";
 
 const spinner = keyframes`
   from {
@@ -9,23 +10,24 @@ opacity: 0;
   }
 `;
 
-export const LoaderContainer = styled.div`
+export const LoaderContainer = styled.div<LoaderProps>`
   display: inline-block;
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: ${(props) => (props.size === "m" ? "60px" : "40px")};
+  height: ${(props) => (props.size === "m" ? "60px" : "40px")};
   div {
-    transform-origin: 30px 30px;
+    transform-origin: ${(props) =>
+      props.size === "m" ? "30px 30px" : "22px 22px"};
     animation: ${spinner} 1.2s linear infinite;
   }
   div:after {
     content: " ";
     display: block;
     position: absolute;
-    top: 8px;
-    left: 27px;
+    top: ${(props) => (props.size === "m" ? "8px" : "6px")};
+    left: ${(props) => (props.size === "m" ? "27px" : "20px")};
     width: 3px;
-    height: 11px;
+    height: ${(props) => (props.size === "m" ? "11px" : "8px")};
     border-radius: 20%;
     background: ${(props) => props.theme.primary.darker};
   }

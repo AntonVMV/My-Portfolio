@@ -4,7 +4,6 @@ import {
   ButtonContainer,
   PopupForm,
   FormContainer,
-  Loading,
 } from "./style";
 import { ReactComponent as MessageIcon } from "./message.svg";
 import { ReactComponent as SendIcon } from "./send.svg";
@@ -100,13 +99,6 @@ export const MessagePopup: React.FC = () => {
                 placeholder="Message"
               />
             </PopupForm>
-
-            {isSendingMessge && (
-              <Loading>
-                <p>Sending message</p>
-                <Loader />
-              </Loading>
-            )}
           </FormContainer>
         </CSSTransition>
 
@@ -118,7 +110,7 @@ export const MessagePopup: React.FC = () => {
               onClick={handleSubmit(formSubmit)}
               disabled={isSendingMessge}
             >
-              <SendIcon />
+              {isSendingMessge ? <Loader /> : <SendIcon />}
             </Button>
           ) : (
             <Button styleType="secondary" onClick={() => setOpen(true)}>

@@ -22,15 +22,3 @@ export const StyledForm = styled.form`
     padding: 25px;
   }
 `;
-
-export const Loading = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  p {
-    color: ${(props) => props.theme.primary.darker};
-  }
-`;

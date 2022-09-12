@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../Button/Button";
-import { StyledForm, Loading } from "./styles";
+import { StyledForm } from "./styles";
 import { useForm } from "react-hook-form";
 import { Input } from "../Input/Input";
 import { TextArea } from "../TextArea/TextArea";
@@ -61,14 +61,14 @@ export const EmailForm: React.FC<EmailFormProps> = ({
         error={errors.message}
       />
       <Button type="submit" disabled={isLoading}>
-        Send
+        {isLoading ? (
+          <>
+            Sending... <Loader size="s" />
+          </>
+        ) : (
+          <>Send</>
+        )}
       </Button>
-      {isLoading && (
-        <Loading>
-          <Loader />
-          <p>Sending email...</p>
-        </Loading>
-      )}
     </StyledForm>
   );
 };

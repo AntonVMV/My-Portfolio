@@ -20,6 +20,10 @@ const secondary = css`
       transform: scale(120%);
     }
   }
+  @media screen and (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 export const StyledButton = styled.button<ButtonProps>`
@@ -35,6 +39,7 @@ export const StyledButton = styled.button<ButtonProps>`
   box-shadow: 0px 3px 7px -2px rgba(0, 0, 0, 0.3);
   transition: 0.2s ease;
   display: flex;
+  align-items: center;
   gap: 10px;
   ${(props) => props.styleType === "secondary" && secondary}
   :hover {
