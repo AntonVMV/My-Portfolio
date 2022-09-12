@@ -10,9 +10,10 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
   styleType = "primary",
+  ...props
 }) => {
   return (
-    <StyledButton onClick={onClick} styleType={styleType}>
+    <StyledButton onClick={onClick} styleType={styleType} {...props}>
       {children}
     </StyledButton>
   );

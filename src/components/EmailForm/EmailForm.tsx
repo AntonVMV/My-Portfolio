@@ -1,16 +1,21 @@
 import React from "react";
 import { Button } from "../Button/Button";
-import { StyledForm } from "./styles";
+import { StyledForm, Loading } from "./styles";
 import { useForm } from "react-hook-form";
 import { Input } from "../Input/Input";
 import { TextArea } from "../TextArea/TextArea";
 import { IForm } from "../types";
+import { Loader } from "../Loader/Loader";
 
 interface EmailFormProps {
   submitHnd: (data: IForm) => void;
+  isLoading: boolean;
 }
 
-export const EmailForm: React.FC<EmailFormProps> = ({ submitHnd }) => {
+export const EmailForm: React.FC<EmailFormProps> = ({
+  submitHnd,
+  isLoading,
+}) => {
   const {
     register,
     handleSubmit,
@@ -55,7 +60,15 @@ export const EmailForm: React.FC<EmailFormProps> = ({ submitHnd }) => {
         placeholder="Your message"
         error={errors.message}
       />
-      <Button type="submit">Send</Button>
+      <Button type="submit" disabled={isLoading}>
+        Send
+      </Button>
+      {isLoading && (
+        <Loading>
+          <Loader />
+          <p>Sending email...</p>
+        </Loading>
+      )}
     </StyledForm>
   );
 };

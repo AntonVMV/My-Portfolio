@@ -43,4 +43,8 @@ export const StyledButton = styled.button<ButtonProps>`
   :active {
     box-shadow: none;
   }
+  &:disabled {
+    pointer-events: none;
+    filter: grayscale();
+  }
 `;

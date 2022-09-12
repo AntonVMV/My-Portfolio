@@ -13,6 +13,7 @@ import { sendEmail } from "../../controller/messageController";
 
 export const Contact: React.FC = () => {
   const [modalText, setModalText] = useState<string | null>(null);
+  const [isMailSending, setMailSending] = useState<boolean>(false);
 
   const copyToClipboard = (e: React.MouseEvent<HTMLParagraphElement>) => {
     navigator.clipboard
@@ -22,10 +23,13 @@ export const Contact: React.FC = () => {
 
   const sendEmailHandler = async (data: IForm) => {
     try {
+      setMailSending(true);
       await sendEmail(data);
       setModalText("Success");
     } catch (e) {
       setModalText("Server error");
+    } finally {
+      setMailSending(false);
     }
   };
 
@@ -37,7 +41,7 @@ export const Contact: React.FC = () => {
           If I managed to interest you, <Highlighted>contact me</Highlighted> in
           any convenient way.
         </MainTitle>
-        <EmailForm submitHnd={sendEmailHandler} />
+        <EmailForm submitHnd={sendEmailHandler} isLoading={isMailSending} />
         <Contacts>
           <h3>My contacts:</h3>
           <div>

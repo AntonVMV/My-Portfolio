@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
+  position: relative;
   padding: 50px;
   background-color: ${(props) => props.theme.background.lighter};
   display: grid;
@@ -19,5 +20,17 @@ export const StyledForm = styled.form`
   @media screen and (max-width: 768px) {
     min-width: 80%;
     padding: 25px;
+  }
+`;
+
+export const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  p {
+    color: ${(props) => props.theme.primary.darker};
   }
 `;

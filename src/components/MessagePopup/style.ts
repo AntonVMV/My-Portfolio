@@ -65,3 +65,16 @@ export const PopupForm = styled.form`
   display: grid;
   row-gap: 30px;
 `;
+
+export const Loading = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  p {
+    color: ${(props) => props.theme.primary.darker};
+  }
+`;

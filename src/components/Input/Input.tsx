@@ -10,7 +10,7 @@ export const Input = forwardRef(
   ({ error, ...props }: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
     return (
       <InputContainer>
-        <StyledInput {...props} error={error} ref={ref} />
+        <StyledInput error={error} ref={ref} {...props} />
         {error && <StyledError>{error.message}</StyledError>}
       </InputContainer>
     );

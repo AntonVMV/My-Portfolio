@@ -4,6 +4,7 @@ import {
   ButtonContainer,
   PopupForm,
   FormContainer,
+  Loading,
 } from "./style";
 import { ReactComponent as MessageIcon } from "./message.svg";
 import { ReactComponent as SendIcon } from "./send.svg";
@@ -17,10 +18,12 @@ import { useForm } from "react-hook-form";
 import { sendTgMessage } from "../../controller/messageController";
 import { IMessage } from "../types";
 import { MainPortal } from "../../MainPortal/MainPortal";
+import { Loader } from "../Loader/Loader";
 import { Modal } from "../Modal/Modal";
 
 export const MessagePopup: React.FC = () => {
   const [modalText, setModalText] = useState<string | null>(null);
+  const [isSendingMessge, setSendingMessage] = useState<boolean>(false);
   const [isOpen, setOpen] = useState<boolean>(false);
   const {
     handleSubmit,
@@ -36,10 +39,13 @@ export const MessagePopup: React.FC = () => {
     }
 
     try {
+      setSendingMessage(true);
       await sendTgMessage(data);
       setModalText("Success");
     } catch (e) {
       setModalText("Server error");
+    } finally {
+      setSendingMessage(false);
     }
 
     closeModal();
@@ -94,17 +100,29 @@ export const MessagePopup: React.FC = () => {
                 placeholder="Message"
               />
             </PopupForm>
+
+            {isSendingMessge && (
+              <Loading>
+                <p>Sending message</p>
+                <Loader />
+              </Loading>
+            )}
           </FormContainer>
         </CSSTransition>
 
         <ButtonContainer>
           {isOpen ? (
-            <Button styleType="secondary" type="submit" form="message-form">
-              <SendIcon onClick={handleSubmit(formSubmit)} />
+            <Button
+              styleType="secondary"
+              type="submit"
+              onClick={handleSubmit(formSubmit)}
+              disabled={isSendingMessge}
+            >
+              <SendIcon />
             </Button>
           ) : (
-            <Button styleType="secondary">
-              <MessageIcon onClick={() => setOpen(true)} />
+            <Button styleType="secondary" onClick={() => setOpen(true)}>
+              <MessageIcon />
             </Button>
           )}
         </ButtonContainer>
